@@ -1,0 +1,10 @@
+services:
+  - name: chat-app
+    type: web
+    env: python
+    buildCommand: "pip install -r requirements.txt"
+    startCommand: "gunicorn -k eventlet -w 1 app:app --bind 0.0.0.0:10000"
+    plan: free
+    envVars:
+      - key: PORT
+        value: 10000
